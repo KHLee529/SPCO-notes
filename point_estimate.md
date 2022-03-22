@@ -31,9 +31,8 @@ breaks: false
 - Point Estimator 是表達 Point Estimate 的隨機性所產星的隨機變數。
 :::
 
-## 方法
 
-### 期望值 (Expected Value, Mean)
+## 期望值 (Expected Value, Mean)
 
 對於期望值，有很多種估計量的選擇方法，其中最常見的就是樣本平均值 (Sample Mean, Average)，計算方法如下
 
@@ -76,7 +75,7 @@ $$
 
 由上圖不難發現，為了得到精準的估計結果，我們需要找到一個沒有偏誤且分散程度盡量小的點估計量。而首先先針對偏誤進行衡量。
 
-#### Bias
+### Bias
 
 由於點估計量 $\hat \theta$ 為抽樣結果進行統計運算所得，因此可以由理論推得其期望值。\
 而當點估計量的期望值與該參數相同時，即認定該點估計量為「沒有偏誤 (unbiased)」，否則 $\hat \theta$ 的期望值與 $\theta$ 的差距即稱為偏誤。意即
@@ -110,7 +109,7 @@ $$
 
 ![normal.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/normal.png?raw=true)
 
-#### Standard Error
+### Standard Error
 
 對於一個點估計量，將其標準差定義為標準誤差 (Standard Error)，通常以 $\sigma _ {\hat \theta}$ 表記。
 
@@ -133,10 +132,30 @@ $$
 \sigma _ {\hat p} & = \sqrt {\text{Var} (\bar X)} = \sqrt {\text{Var} \left ( {\sum \limits _ {i = 1} ^ n X \over n} \right )} \\
 & = \sqrt {\text{Var} \left ( \sum \limits _ {i = 1} ^ n X \right ) \over n ^ 2 } \\
 \left (\sum \limits _ {i = 1} ^ n X \sim \text{Binomial}(n, p) \right ) & = \sqrt {np(1 - p) \over n ^ 2} = \sqrt {p(1 - p) \over n} \\ \\
-\sigma _ {\hat p} & = \sqrt {\hat p (1 - \hat p) \over n} \\
-& = \sqrt {{\sum \limits _ {i = 1} ^ n x \over n} (1 - {\sum \limits _ {i = 1} ^ n x \over n}) \over n} \\
+\hat \sigma _ {\hat p} & = \sqrt {\hat p (1 - \hat p) \over n} \\
+& = \sqrt {{\sum \limits _ {i = 1} ^ n x \over n} \left (1 - {\sum \limits _ {i = 1} ^ n x \over n} \right ) \over n} \\
 & = \sqrt {x (n - x) \over n}
 \end{aligned}
 $$
 
-### 變異數 (Variance)
+## 變異數 (Variance)
+
+上面提到了估計變異數通常使用的點估計量 $\bar X$，而變異數是否能夠用取樣變異數進行估計呢？這部分以一個例子推演
+
+例：假設 $X_1, X_2, \dots , X_n$ 為 i.i.d，並且期望值為 $\mu$ 變異數為 $\sigma ^ 2$。
+
+$$
+\begin{aligned}
+\text{E} \left [ S ^ 2 \right ] & = \text{E} \left [ {1 \over 1 - n} \sum \limits _ {i = 1} ^ n (X_i - \bar X) \right ] \\
+& = {1 \over n - 1} \text{E} \left [ \sum \limits _ {i = 1} ^ n X_i^2 - \sum \limits _ {i = 1} ^ n 2 X_i \bar X + \sum \limits _ {i = 1} ^ n \bar X ^ 2 \right ] \\
+& = {1 \over n - 1} \left \{\sum \limits _ {i = 1} ^ n \text{E} \left [ X_i^2 \right ] - 
+\text{E} \left [2n {\sum \limits _ {i = 1} ^ n  X_i \over n} \bar X - \sum \limits _ {i = 1} ^ n \bar X ^ 2 \right ] \right \} \\
+& = {1 \over n - 1} \left \{n \text{E} \left [ X_i^2 \right ] - \text{E} \left [2n \bar X ^ 2 - n \bar X ^ 2 \right ] \right \} \\
+& = {1 \over n - 1} \left \{n \left [ \sigma ^ 2 + \mu ^ 2 \right ] - n \text{E} \left [ \bar X ^ 2 \right ] \right \} \\
+& = {1 \over n - 1} \left \{n \sigma ^ 2 + n \mu ^ 2 - n  \left [ {\sigma ^ 2 \over n} + \mu ^ 2 \right ] \right \} \\
+& = {1 \over n - 1} \left [(n - 1) \sigma ^ 2 + n \mu ^ 2 - n \mu ^ 2 \right ] \\
+& = \sigma ^ 2 \Rightarrow \text{ unbiased}
+\end{aligned}
+$$
+
+由此，可以推得取樣變異數為一個沒有偏誤的變異數點估計量。
