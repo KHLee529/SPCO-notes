@@ -126,15 +126,15 @@ $$
 \sigma _ {\bar X} = \sqrt {\text{Var} (\bar X)} = \sqrt {\sigma ^ 2 \over n} = {\sigma \over \sqrt {n}}
 $$
 
-又例如：估計伯努力機率分佈的參數 $p$ 點估計量 $\hat p = \bar X = {\sum X \over n}$ 的標準誤差為
+又例如：估計伯努力機率分佈的參數 $p$ 點估計量 $\hat p = \bar X = {\sum \limits _ {i = 1} ^ n X \over n}$ 的標準誤差為
 
 $$
 \begin{aligned}
-\sigma _ {\hat p} & = \sqrt {\text{Var} (\bar X)} = \sqrt {\text{Var} \left ( {\sum X \over n} \right )} \\
-& = \sqrt {\text{Var} \left ( \sum X \right ) \over n ^ 2 } \\
-\left (\sum X \sim \text{Binomial}(n, p) \right ) & = \sqrt {np(1 - p) \over n ^ 2} = \sqrt {p(1 - p) \over n} \\ \\
+\sigma _ {\hat p} & = \sqrt {\text{Var} (\bar X)} = \sqrt {\text{Var} \left ( {\sum \limits _ {i = 1} ^ n X \over n} \right )} \\
+& = \sqrt {\text{Var} \left ( \sum \limits _ {i = 1} ^ n X \right ) \over n ^ 2 } \\
+\left (\sum \limits _ {i = 1} ^ n X \sim \text{Binomial}(n, p) \right ) & = \sqrt {np(1 - p) \over n ^ 2} = \sqrt {p(1 - p) \over n} \\ \\
 \sigma _ {\hat p} & = \sqrt {\hat p (1 - \hat p) \over n} \\
-& = \sqrt {{\sum x \over n} (1 - {\sum x \over n}) \over n} \\
+& = \sqrt {{\sum \limits _ {i = 1} ^ n x \over n} (1 - {\sum \limits _ {i = 1} ^ n x \over n}) \over n} \\
 & = \sqrt {x (n - x) \over n}
 \end{aligned}
 $$
