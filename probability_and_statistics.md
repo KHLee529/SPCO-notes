@@ -5,6 +5,8 @@ break: false
 
 # Probability and Statistics
 
+[![hackmd-github-sync-badge](https://hackmd.io/RVmAnHS8SUWPUKmSGNkPRQ/badge)](https://hackmd.io/RVmAnHS8SUWPUKmSGNkPRQ)
+
 > 「機率統計」貌似是一個很常被結合再一起用的東西，但「機率」與「統計」又通常是兩門不同的學科，而其中的差異到底在什麼地方，又有什麼相似的地方呢。
 
 ## 機率與統計的關係
