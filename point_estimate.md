@@ -83,7 +83,60 @@ $$
 
 $$
 \hat \theta \text{ is said unbiased if E} (\hat \theta) = \theta \\
-\text{otherwise E} (\hat \theta) - \theta \text{is called the bias of } \theta
+\text{otherwise E} (\hat \theta) - \theta \text{ is called the bias of } \theta
+$$
+
+例如，針對一個常態分佈的隨機變數 $X \sim N(\mu, \sigma)$，以平均值估計其期望值。我們可以透過以下方法評估此點估計量的偏誤。
+
+$$
+\begin{aligned}
+\text{E} (bar X) & = \text{E} \left ( {\sum \limits _ {i = 1} ^ n X_i \over n} \right ) \\
+& = {1 \over n} \text{E} \left ( \sum \limits _ {i = 1} ^ n X_i \right ) \\
+& = {1 \over n} \times n \text{E} \left ( X_i \right ) \\
+& = \text{E} (X) \Rightarrow \text{unbiased}
+\end{aligned}
+$$
+
+可以看出透過理論推演得到，假設 $X$ 為遵守常態分佈時，以 $\bar X = {\sum \limits _ {i = 1} ^ n X_i \over n}$ 估計 $\text{E} (X)$ 是沒有偏誤的。
+
+而由隨機變數的線性組合當中可以得到
+
+$$
+\text{E} (\bar X) = \text{E} (X) = \mu,\quad \text{Var} (\bar X) = {\text{Var} (\bar X) \over n} = {\sigma ^ 2 \over n}
+$$
+
+因此可以得到，對於三個樣本數不同的三次取樣所得的平均值 $\bar X_1, \bar X_2, \bar X_3$，取樣大小分別為 $n_1 , n_2 , n_3$ 且 $n_1 > n_2 > n_3$。
+可以得到 $\bar X_1, \bar X_2, \bar X_3$ 的機率分佈如下圖所示 (圖中央虛線為 $\mu$)，使用相同的估計方式，在不同的取樣大小下，估計的分散程度便會有所差異。
+
+![normal.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/normal.png?raw=true)
+
+#### Standard Error
+
+對於一個點估計量，將其標準差定義為標準誤差 (Standard Error)，通常以 $\sigma _ {\hat \theta}$ 表記。
+
+$$
+\sigma _ {\hat \theta} = \sqrt {\text{Var} (\hat \theta)}
+$$
+
+而對於標準誤差的估計值，即稱為估計標準誤差 (Estimated Standard Error)，通常以 $\hat \sigma _ {\hat \theta}$ 或 $S _ {\hat \theta}$ 表記。
+
+例如：點估計量 $\bar X$ 的標準誤差為
+
+$$
+\sigma _ {\bar X} = \sqrt {\text{Var} (\bar X)} = \sqrt {\sigma ^ 2 \over n} = {\sigma \over \sqrt {n}}
+$$
+
+又例如：估計伯努力機率分佈的參數 $p$ 點估計量 $\hat p = \bar X = {\sum X \over n}$ 的標準誤差為
+
+$$
+\begin{aligned}
+\sigma _ {\hat p} & = \sqrt {\text{Var} (\bar X)} = \sqrt {\text{Var} \left ( {\sum X \over n} \right )} \\
+& = \sqrt {\text{Var} \left ( \sum X \right ) \over n ^ 2 } \\
+\left (\sum X \sim \text{Binomial}(n, p) \right ) & = \sqrt {np(1 - p) \over n ^ 2} = \sqrt {p(1 - p) \over n} \\ \\
+\sigma _ {\hat p} & = \sqrt {\hat p (1 - \hat p) \over n} \\
+& = \sqrt {{\sum x \over n} (1 - {\sum x \over n}) \over n} \\
+& = \sqrt {x (n - x) \over n}
+\end{aligned}
 $$
 
 ### 變異數 (Variance)

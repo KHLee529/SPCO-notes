@@ -5,7 +5,7 @@ unset ytics
 unset xtics
 
 set output "../pics/bias.png"
-set term png size 1000,1000 font "Monospace 10"
+set term png size 1000,1000
 
 set xrange [-30:30]
 set yrange [-30:30]
