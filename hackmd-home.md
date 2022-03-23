@@ -15,3 +15,8 @@ tags: SPCO, Homepage
 
 - [Probabillity and Statistics](/@KHLee529/probability-and-statistics)
 
+## Statistics
+
+- [Point Estimate](/@KHLee529/point-estimate)
+- [Hypothesis Test](/@KHLee529/hypothesis-test)
+

@@ -5,6 +5,8 @@ breaks: false
 
 # Hypothesis Testing
 
+[![hackmd-github-sync-badge](https://hackmd.io/MRq5ut1ZSi-Nar6ZI6hSnA/badge)](https://hackmd.io/MRq5ut1ZSi-Nar6ZI6hSnA)
+
 透過 Point Estimate 的部分知道了估計模型參數的方法，而接著就是要驗證該估計結果與預期的結果是否相同。
 例如，工業系統的加工期望值與設計需求的期望值是否相同、新開發藥物是否確實達到其標榜的功效...等等。
 
