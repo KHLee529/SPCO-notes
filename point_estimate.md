@@ -31,7 +31,6 @@ breaks: false
 - Point Estimator 是表達 Point Estimate 的隨機性所產星的隨機變數。
 :::
 
-
 ## 期望值 (Expected Value, Mean)
 
 對於期望值，有很多種估計量的選擇方法，其中最常見的就是樣本平均值 (Sample Mean, Average)，計算方法如下
@@ -138,6 +137,16 @@ $$
 \end{aligned}
 $$
 
+### Different Point Estimators of Mean
+
+由於點估計量是透過取樣得到的資料運算後對資料原始模型進行估計，則計算方式就可以有很多種，以下為幾種常用的期望值點估計量。
+
+- $\bar X$: 以抽樣的結果的算術平均數估計期望值。
+- $\tilde X$: 以抽樣結果的中位數估計期望值。
+- $\bar X _ e$: 以抽樣結果的極端值 (最大值與最小值) 取算數平均數估計期望值。
+- $\bar X _ {\text{tr}(m)}$: 將抽樣的結果兩端各去除 $m\%$ 的資料點後取算數平均數估計期望值。\
+    (亦有一種版本是總共去除 $m\%$，即兩端各去除 ${m \over 2}\%$)
+
 ## 變異數 (Variance)
 
 上面提到了估計變異數通常使用的點估計量 $\bar X$，而變異數是否能夠用取樣變異數進行估計呢？這部分以一個例子推演
@@ -146,7 +155,7 @@ $$
 
 $$
 \begin{aligned}
-\text{E} \left [ S ^ 2 \right ] & = \text{E} \left [ {1 \over 1 - n} \sum \limits _ {i = 1} ^ n (X_i - \bar X) \right ] \\
+\text{E} \left [ S ^ 2 \right ] & = \text{E} \left [ {1 \over n - 1} \sum \limits _ {i = 1} ^ n (X_i - \bar X) \right ] \\
 & = {1 \over n - 1} \text{E} \left [ \sum \limits _ {i = 1} ^ n X_i^2 - \sum \limits _ {i = 1} ^ n 2 X_i \bar X + \sum \limits _ {i = 1} ^ n \bar X ^ 2 \right ] \\
 & = {1 \over n - 1} \left \{\sum \limits _ {i = 1} ^ n \text{E} \left [ X_i^2 \right ] - 
 \text{E} \left [2n {\sum \limits _ {i = 1} ^ n  X_i \over n} \bar X - \sum \limits _ {i = 1} ^ n \bar X ^ 2 \right ] \right \} \\
@@ -159,3 +168,61 @@ $$
 $$
 
 由此，可以推得取樣變異數為一個沒有偏誤的變異數點估計量。
+
+## Performance
+
+上面有提到，對於同一種參數可以有很多種點估計量，也就是不同的估計方法。而對於各個不同的估計量要怎麼比較其優劣，就是很重要的事情。
+
+從上面可以知道，一個點估計量基本上有兩個很重要的指標，偏誤與分散程度。從之前的標靶圖也可以很簡單的想像到，一個簡單判斷好的估計量的方式就是去找「沒有偏誤且分散程度最低的估計量」，
+英文寫作 Minimum Variance Unbiased Estimator (MVUE)，這是個非常直觀的想法。
+
+如下圖的情況，有三個不同的估計值皆沒有偏誤時，勢必選擇 $\hat X_1$ 可以預期得到最精準的估計。
+
+![mvue0.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/mvue0.png?raw=true)
+
+但，若此時有一另一個有偏誤的點估計量 $\hat X_0$ 的出現，而其機率密度函數如下圖所示。
+
+![mvue1.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/mvue1.png?raw=true)
+
+這時候由圖示中便很難說 $\hat X_0$ 是個不好的點估計量，甚至它得到的估計值落在 $\theta$ 附近的機率較 $\hat X_1$ 還高。
+因此，即便 MVUE 為一個很簡單的判斷準則，但在實際應用上仍要考慮其他可能性後再去做最後的決定。
+
+而上面提到的四個對於期望值的點估計量，分別在不同的機率分佈下有其優劣。
+
+- $\bar X$ 在常態分佈下是最好的選擇。
+- $\tilde X$ 對於柯西機率分佈 (Cauchy Distribution，為一個尾端較厚重的鐘型分佈) 較優，由於其尾端出現機率較高，較可能出現嚴重影響平均值的極端值。
+- $\bar X_e$ 為均勻分布 (Uniform Distribution) 最好的選擇。
+- $\bar X _ {\text{tr}(m)}$ 對於大部分的機率分佈效果都不錯但通常不是最優。
+
+因此，在對於點估計量進行取捨時，可以多方嘗試不同的選擇後再確定較優。
+
+## Often Used Methods for Point Estimator
+
+到此為止，皆是針對常態分佈的參數 (期望值、標準差) 的點估計量，而對於其他各種不同的機率分佈模型參數，亦有許多相對應的方法。
+而因此，對於任意一個模型皆可以求出一個合理的點估計量變成為一個重要的課題。
+而求這些不同的點估計量的方法千百種，以下將會介紹最基本也最常用的兩種
+
+- Moment Estimator
+- Maximum Likelihood Estimator (MLE)
+
+### 動差估計 (Moment Estimator)
+
+在講解動差估計之前，先定義動差 (Moment)。
+
+對於一個機率模型而言，$n$ 次動差即為 $X^n$ 的期望值，意即
+
+$$
+\begin{aligned}
+& \text{1st Moment: E} (X) 
+& \text{2nd Moment: E} (X^2) 
+& \vdots
+& n\text{th Moment: E} (X^n) 
+\end{aligned}
+$$
+
+
+
+### 最大相似性估計 (Maximum Likelihood Estimator)
+
+
+
