@@ -213,16 +213,63 @@ $$
 
 $$
 \begin{aligned}
-& \text{1st Moment: E} (X) 
-& \text{2nd Moment: E} (X^2) 
-& \vdots
+& \text{1st Moment: E} (X)  \\
+& \text{2nd Moment: E} (X^2)  \\
+& \vdots \\
 & n\text{th Moment: E} (X^n) 
 \end{aligned}
 $$
 
+而動差估計，便是利用模型的 $m$ 個參數與 1 到 $m$ 次動差之間的關係，求出所有動差的估計值後再反推參數的方法。
 
+例如，在伽瑪機率分佈 (Gamma Distribution) 當中，期望值、變異數與參數 $\alpha, \beta$ 間的關係為
+
+$$
+\text{E} (X) = \alpha \beta \, , \quad 
+\text{Var} (X) = \text{E} (X^2) - \text{E}^2 (X) = \alpha \beta ^ 2
+$$
+
+因此，由這兩個關係反推參數分別為
+
+$$
+\hat \beta = {\hat \sigma ^ 2 \over \widehat {\text{E} (X)}} = {S^2 \over \bar X} \, , \quad
+\hat \alpha = {\widehat {\text{E}^2 (X)} \over \hat \sigma ^ 2} = {\bar X^2 \over S ^ 2}
+$$
+
+這個方法就是這麼直接，把原本的關係反過來用來估計就對了。
 
 ### 最大相似性估計 (Maximum Likelihood Estimator)
 
+這個做法是假設每一次抽樣為 i.i.d，因此抽樣得到結果 $X_1, X_2, \dots, X_n$ 的機率 (或概度 Likelihood) 為
+
+$$
+P(X_1 = x_1, X_2 = x_2, \dots, X_n = x_n) = P(X_1 = x_1)P(X_2 = x_2) \cdots P(X_n = x_n) \text{ for discrete}\\
+\text{or} \\
+f(X_1 = x_1, X_2 = x_2, \dots, X_n = x_n) = f(X_1 = x_1)f(X_2 = x_2) \cdots f(X_n = x_n) \text{ for continous}
+$$
+
+而在判斷模型參數時，假設抽樣出來的結果為發生可能性最高的那個，如下圖
+
+![mle.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/mle.png?raw=true)
+
+對於三個不同的 $\mu$ 的常態分佈而言，抽出該次抽樣結果的機率分別為黑色高度相乘。
+可以明顯看出，最上方的圖中各個點抽樣出來的機率 (黑色長條) 乘積較其他兩者大，故選擇第一個點估計量。
+
+而具體的計算方法如以下範例。
+
+例如，以 MLE 求指數機率分佈的參數 $\lambda$ 的點估計量。
+由於要求概度的最大值，便將該函數進行微分後取微分等於 0 的位置。
+
+$$
+\begin{aligned}
+& {d \over d \lambda} \text{likelihood} (\lambda = \hat \lambda ) = 0 \Rightarrow {d \over d \lambda} \left ( \prod \limits _{i = 1} ^ n \lambda e ^ {- \lambda x_i} \right ) = 0 \\
+& \Rightarrow {d \over d \lambda} \left ( \lambda ^ n \prod \limits _{i = 1} ^ n \left (e ^ {- \lambda} \right ) ^ {x_i} \right ) = 0 \\
+& \Rightarrow {d \over d \lambda} \left ( \lambda ^ n \cdot \left (e ^ {- \lambda} \right ) ^ {\sum \limits _{i = 1} ^ n x_i} \right ) = 0 \\
+& \Rightarrow \left ( n \lambda ^ {n - 1} \cdot \left (e ^ {- \lambda} \right ) ^ {\sum \limits _{i = 1} ^ n x_i} +
+\lambda ^ n \cdot \left ( {\sum \limits _{i = 1} ^ n x_i} \right ) \underbrace {\left (e ^ {- \lambda} \right ) ^ {\sum \limits _{i = 1} ^ n x_i - 1} \cdot 
+\left (- e ^ {- \lambda} \right )} _ {- \left (e ^ {- \lambda} \right ) ^ {\sum \limits _{i = 1} ^ n x_i}}\right ) = 0 \\
+& \Rightarrow {1 \over \hat \lambda} = {\sum \limits _{i = 1} ^ n x_i \over n} = \bar X \Rightarrow \boxed{ \hat \lambda = {1 \over \bar X}}
+\end{aligned}
+$$
 
 
