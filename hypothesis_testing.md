@@ -67,7 +67,7 @@ $(\bar X - 1.96 {\sigma \over \sqrt{n}}, \bar X + 1.96 {\sigma \over \sqrt{n}})$
 $$
 \left ( 
 \bar x + z _ {\alpha \over 2} {\sigma \over \sqrt{n}}, 
-\bar x + z _ {1 - \alpha \over 2} {\sigma \over \sqrt{n}}
+\bar x + z _ {1 - {\alpha \over 2}} {\sigma \over \sqrt{n}}
 \right)
 $$
 :::
@@ -89,7 +89,7 @@ $$
 $$
 \left ( 
 \bar x + z _ {\alpha \over 2} {S \over \sqrt{n}}, 
-\bar x + z _ {1 - \alpha \over 2} {S \over \sqrt{n}}
+\bar x + z _ {1 - {\alpha \over 2}} {S \over \sqrt{n}}
 \right)
 $$
 :::
