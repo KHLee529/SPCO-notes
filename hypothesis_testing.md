@@ -205,11 +205,11 @@ $$
 「我的證據就算在第一型錯誤機率為 $p$ 時也可以通過假說檢定」\
 意即只要檢定機關所提出的檢定標準 $\alpha$ 較 $p$ 大時，皆可以通過該檢定。而此時的機率 $p$ 便被稱為該證據的 **p 值 (p-value)**。
 
-以數學方式表達即為
+以數學方式表達為
 
 $$
 \begin{array}{ll}
-H_1 & \text{Type} & p\text{-value} \\
+H_1 & \text{Type} & p\text{-value} \\ \hline
 \mu < \mu_0 & \text{one-tailed} & p = F^{-1} _ {T(\nu = n - 1)} \left (t = {\mu - \mu_0 \over S / \sqrt{n}} \right ) \\
 \mu > \mu_0 & \text{one-tailed} &  p = 1 - F^{-1} _ {T(\nu = n - 1)} \left (t = {\mu - \mu_0 \over S / \sqrt{n}} \right ) \\
 \mu \ne \mu_0 & \text{two-tailed} &  
@@ -219,6 +219,32 @@ H_1 & \text{Type} & p\text{-value} \\
     \end{cases}
 \end{array}
 $$
+
+### 變異數
+
+由於樣本變異數 $S^2$ 已被證明是一個無偏誤的估計量，因此被視為一個好的估計量。對於變異數的變化則該如何去檢定呢？
+
+由期望值建立檢定的過程可以理解到，建立一個檢定是先從一估計量的隨機性下手，了解其機率分佈後，將該機率分佈與實際的值建立關係 (差、商...等等)，便可透過該關係的機率模型進行檢測。
+由此，先從可能的方向下手，由於 $\sigma ^ 2$ 與 $X_i^2$ 有關係，這個部分的機率分佈勢必須要了解。
+$$
+X_i \sim \text{Normal} (0, 1) \Rightarrow \sum ^ n X_i^2 \sim \chi ^2 (n)
+$$
+透過這個關係，得到以下推導
+$$
+\begin{aligned}
+\sum^n \left ( {X_i - \mu \over \sigma} \right ) & = {\sum^n (X_i - \boxed{\mu}) ^ 2 \over \sigma ^ 2} \sim \chi^2 \left( \boxed{n} \right ) \\
+S^2 = {\sum^n (X_i - \bar X) ^ 2 \over n - 1} & \Rightarrow \sum ^ n (X_i - \bar X) ^ 2 = (n - 1) S^2
+{(n - 1) S^2 \over \sigma ^ 2} & = {\sum ^ n \left (X_i - \boxed{\bar X} \right ) ^ 2 \over \sigma ^ 2} \sim \chi^ 2 \left (\boxed{n - 1} \right )
+\end{aligned}
+$$
+
+透過這個關係，我們可以知道 ${(n - 1) S^2 \over \sigma ^ 2}$ 遵守卡方分佈，而透過這個機率分佈便可以判定兩者關係。
+
+例如，$H_0: \sigma ^ 2 = \sigma_0^2$ $H_1: \sigma ^ 2 > \sigma_0^2$ 時
+
+![chisq-test.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/chisq-test.png?raw=true)
+
+以相同的觀念可以推得，當 ${(n - 1) \sigma ^ 2 \over \sigma _ 0 ^ 2} > F^{-1} _ {\chi^2 (\nu = n - 1)} (1 - \alpha)$ 時，可推翻虛無假說。
 
 
 
