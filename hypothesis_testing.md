@@ -106,7 +106,7 @@ $$
 
 $$
 f _ {X \sim \text{T}(\nu)} (X = x) = {\Gamma \left ( {\nu + 1 \over 2} \right ) \over \sqrt{\nu \pi} \Gamma \left ( {\nu + 1 \over 2} \right )} 
-{1 \over \left ({1 + x^2 \over \nu} \rightarrow ) ^ {\nu + 1 \over 2}}
+{1 \over \left ({1 + x^2 \over \nu} \right ) ^ {\nu + 1 \over 2}}
 $$
 
 
