@@ -88,7 +88,7 @@ $$
 
 $$
 \begin{aligned}
-\text{E} (bar X) & = \text{E} \left ( {\sum \limits _ {i = 1} ^ n X_i \over n} \right ) \\
+\text{E} (\bar X) & = \text{E} \left ( {\sum \limits _ {i = 1} ^ n X_i \over n} \right ) \\
 & = {1 \over n} \text{E} \left ( \sum \limits _ {i = 1} ^ n X_i \right ) \\
 & = {1 \over n} \times n \text{E} \left ( X_i \right ) \\
 & = \text{E} (X) \Rightarrow \text{unbiased}
