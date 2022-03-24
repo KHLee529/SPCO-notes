@@ -18,6 +18,6 @@ f(x,d1,d2)=d1<=0||!isint(d1)||d2<=0||!isint(d2)?1/0:  Binv(0.5*d1,0.5*d2)*(real(
 set label 'α' at 3.6, 0.1 left 
 
 plot f(x,5,5) title 'F(ν_1, ν_2)',\
-    [3.5:5] f(x,5,5) with impulse notitle,\
+    [3.5:5] f(x,5,5) with impulse lt -1 notitle,\
     '+' using (3.5):(0.5) with impulse lt -1 notitle
 
