@@ -178,12 +178,15 @@ $$
 
 這時後，實際上應用的方式就根據 $H_1$ 有所差別了。以下的表格簡單代表了三個不同的 $H_1$ 中信心水準 $\alpha$ 的情況下要推翻虛無假說時 $t$ 的允許範圍。
 
-| $H_1$ | $\mu < \mu_0$ | $\mu > \mu_0$ | $\mu \ne \mu_0$ |
-| :-: | :-: | :-: | :-: |
-|![t-test-less.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-less.png?raw=true)\
-|![t-test-great.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-great.png?raw=true)\
-|![t-test-ne.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-ne.png?raw=true)\
-|
+| $H_1$ | Range |
+| :-: | :-: |
+| $\mu < \mu_0$ |
+![t-test-less.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-less.png?raw=true)|
+| $\mu > \mu_0$ |
+![t-test-great.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-great.png?raw=true)|
+| $\mu \ne \mu_0$ |
+![t-test-ne.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-ne.png?raw=true)|
+
 
 
 
