@@ -180,12 +180,9 @@ $$
 
 | $H_1$ | Range |
 | :-: | :-: |
-| $\mu < \mu_0$ |
-![t-test-less.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-less.png?raw=true)|
-| $\mu > \mu_0$ |
-![t-test-great.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-great.png?raw=true)|
-| $\mu \ne \mu_0$ |
-![t-test-ne.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-ne.png?raw=true)|
+| $\mu < \mu_0$ | ![t-test-less.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-less.png?raw=true)|
+| $\mu > \mu_0$ | ![t-test-great.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-great.png?raw=true)|
+| $\mu \ne \mu_0$ | ![t-test-ne.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-ne.png?raw=true)|
 
 
 
