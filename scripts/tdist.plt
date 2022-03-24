@@ -1,7 +1,5 @@
-# set terminal pngcairo  transparent enhanced font "arial,10" fontscale 1.0 size 600, 400 
-# set output 'prob2.9.png'
+#!/bin/gnuplot
 #
-
 set term png size 1000,1000
 set output '../pics/tdist.png'
 
