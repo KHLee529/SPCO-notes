@@ -174,7 +174,9 @@ $$
 此時若把符號改變一下，改成 $T = {\mu - \mu_0 \over S / \sqrt{n}}$ 時，這個分佈的意義就可以被認定成，\
 「在正常情況下 (期望值為 $\mu_0$) 抽樣得到平均值為 $\mu$ 的機率」\
 在這個定義下，就衍生出了一個想法，假如抽樣得到的平均值 $\mu$ 在正常情況底下出現的機率極低的時候，就認定該主張有造成期望值的差異。(例如：減肥藥有效) \
-此時再將出現機率很小的機率量化為 $\alpha$，便可以將描述改變成，在 $1 - \alpha$ 的信心水準底下，該主張有效，推翻虛無假說。
+此時再將出現機率很小的機率量化為 $\alpha$，便可以將描述改變成，在 $1 - \alpha$ 的信心水準底下，該主張有效，推翻虛無假說。\
+而將此話反過來說，就得到這個檢定方式的結論\
+「在第一型錯誤機率為 $\alpha$ 的情況下認定該主張成立」
 
 這時後，實際上應用的方式就根據 $H_1$ 有所差別了。以下的表格簡單代表了三個不同的 $H_1$ 中信心水準 $\alpha$ 的情況下要推翻虛無假說時 $t$ 的允許範圍。
 
@@ -192,22 +194,31 @@ $$
 H_1 & \text{Reject Region }(t) & \text{Reject Region } (\mu) \\ \hline
 \mu < \mu_0   & t \le f _ {T(\nu=n-1)} (\alpha) & \mu \le \mu_0 - f _ {T(\nu=n-1)} (\alpha) {S \over \sqrt{n}} \\
 \mu > \mu_0   & t \ge f _ {T(\nu=n-1)} (1 - \alpha) &  \mu \ge \mu_0 + f _ {T(\nu=n-1)} (1 - \alpha) {S \over \sqrt{n}} \\
-\mu \ne \mu_0 & \begin{cases} t \le f _ {T(\nu=n-1)} (\alpha) \\ t \ge f _ {T(\nu=n-1)} (1 - \alpha)  \end{cases} & 
-\begin{cases} \mu \le \mu_0 - f _ {T(\nu=n-1)} (\alpha) {S \over \sqrt {n}} \\ \mu \ge \mu_0 + f _ {T(\nu=n-1)} (1 - \alpha) {S \over \sqrt{n}} \end{cases}  
+\mu \ne \mu_0 & \begin{cases} t \le f _ {T(\nu=n-1)} ({\alpha \over 2}) \\ t \ge f _ {T(\nu=n-1)} (1 - {\alpha \over 2})  \end{cases} & 
+\begin{cases} \mu \le \mu_0 - f _ {T(\nu=n-1)} ({\alpha \over 2}) {S \over \sqrt {n}} \\ \mu \ge \mu_0 + f _ {T(\nu=n-1)} (1 - {\alpha \over 2}) {S \over \sqrt{n}} \end{cases}  
 \end{array}
 $$
 
 #### p 值 (p-value)
 
+通常來說，負責檢定的機關與提出主張的機關並不相同，而此時作為提出主張的機關為表現其主張強度，可能會提出以下的說法\
+「我的證據就算在第一型錯誤機率為 $p$ 時也可以通過假說檢定」\
+意即只要檢定機關所提出的檢定標準 $\alpha$ 較 $p$ 大時，皆可以通過該檢定。而此時的機率 $p$ 便被稱為該證據的 **p 值 (p-value)**。
 
+以數學方式表達即為
 
-
-
-
-
-
-
-
+$$
+\begin{array}{ll}
+H_1 & \text{Type} & p\text{-value} \\
+\mu < \mu_0 & \text{one-tailed} & p = F^{-1} _ {T(\nu = n - 1)} \left (t = {\mu - \mu_0 \over S / \sqrt{n}} \right ) \\
+\mu > \mu_0 & \text{one-tailed} &  p = 1 - F^{-1} _ {T(\nu = n - 1)} \left (t = {\mu - \mu_0 \over S / \sqrt{n}} \right ) \\
+\mu \ne \mu_0 & \text{two-tailed} &  
+    \begin{cases}
+    p = 2 \times F^{-1} _ {T(\nu = n - 1)} \left (t = {\mu - \mu_0 \over S / \sqrt{n}} \right ) & \text{ if } \mu < \mu_0 \\\
+    p = 2 \times \left (1 - F^{-1} _ {T(\nu = n - 1)} \left (t = {\mu - \mu_0 \over S / \sqrt{n}} \right ) \right ) & \text{ if } \mu > \mu_0 \\\
+    \end{cases}
+\end{array}
+$$
 
 
 
