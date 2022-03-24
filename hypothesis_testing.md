@@ -185,7 +185,7 @@ $$
 | $\mu \ne \mu_0$ | ![t-test-ne.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-ne.png?raw=true)|
 
 | $H_1$ | $\mu < \mu_0$   | $\mu > \mu_0$   | $\mu \ne \mu_0$ |
-| :-: | :-: |
+| :-: | :-: | :-: | :-: |
 | Range | ![t-test-less.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-less.png?raw=true)| ![t-test-great.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-great.png?raw=true)| ![t-test-ne.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-ne.png?raw=true)| 
 
 
