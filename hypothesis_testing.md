@@ -233,19 +233,65 @@ $$
 $$
 \begin{aligned}
 \sum^n \left ( {X_i - \mu \over \sigma} \right ) & = {\sum^n (X_i - \boxed{\mu}) ^ 2 \over \sigma ^ 2} \sim \chi^2 \left( \boxed{n} \right ) \\
-S^2 = {\sum^n (X_i - \bar X) ^ 2 \over n - 1} & \Rightarrow \sum ^ n (X_i - \bar X) ^ 2 = (n - 1) S^2
+S^2 = {\sum^n (X_i - \bar X) ^ 2 \over n - 1} & \Rightarrow \sum ^ n (X_i - \bar X) ^ 2 = (n - 1) S^2 \\
 {(n - 1) S^2 \over \sigma ^ 2} & = {\sum ^ n \left (X_i - \boxed{\bar X} \right ) ^ 2 \over \sigma ^ 2} \sim \chi^ 2 \left (\boxed{n - 1} \right )
 \end{aligned}
 $$
 
 透過這個關係，我們可以知道 ${(n - 1) S^2 \over \sigma ^ 2}$ 遵守卡方分佈，而透過這個機率分佈便可以判定兩者關係。
 
-例如，$H_0: \sigma ^ 2 = \sigma_0^2$ $H_1: \sigma ^ 2 > \sigma_0^2$ 時
+例如，$H_0: \sigma ^ 2 = \sigma_0^2$、$H_1: \sigma ^ 2 > \sigma_0^2$ 時
 
 ![chisq-test.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/chisq-test.png?raw=true)
 
 以相同的觀念可以推得，當 ${(n - 1) \sigma ^ 2 \over \sigma _ 0 ^ 2} > F^{-1} _ {\chi^2 (\nu = n - 1)} (1 - \alpha)$ 時，可推翻虛無假說。
 
+### 期望值對
+
+假設有兩個隨機變數 $X,Y$ 符合常態分佈且有相同的期望值 $\mu$ 與標準差 $\sigma$ 時，$X$ 取樣 $m$ 個的平均數 $\bar X$ 與 $Y$ 取樣 $n$ 個的平均數 $\bar Y$ 的差
+$\bar X - \bar Y$ 符合常態分佈 $\text{Normal} \left (0, \sigma \sqrt{{1 \over m} + {1 \over n}} \right )$ 此時，只要得到 $\sigma$ 的估計值，便可以使用 T-test 進行假說檢定。
+
+而如上述的情況中對於兩個相同變異數的隨機變數，欲使用兩個樣本變異數 $S_x^2, S_y^2$ 去估計其共同變異數時，可以使用**綜合估計量 (Pooled Estimator)** 進行估計。
+其計算方式為兩樣本變異數以自由度作為權重的加權平均如下。
+
+$$
+S_p^2 = {m - 1 \over m - 1 + n - 1} S_x^2 + {n - 1 \over m - 1 + n - 1} S_y^2
+$$
+
+透過這個估計量，可以使用 T-test 評估兩變異數的差異，假設虛無假說 $H_0: \mu_x - \mu_y = \Delta$ ($\Delta = 0$ 若要求兩者是否相等)
+
+$$
+\text{T-Statistics: } t = {(\bar X - \bar Y) - \Delta \over S_p \sqrt{{1 \over m} + {1 \over n}}}
+$$
+
+此時 T 分佈的自由度為 $m + n - 2$，即可進行檢定。
+
+### 變異數對
+
+由於這個數對的推理比較困難，直接說結論
+
+對於兩個滿足常態分佈且有相同變異數的隨機變數 $X, Y$，分別取樣 $n_1$ 與 $n_2$ 個樣本，他們的樣本變異數有以下的關係。
+
+$$
+{S_X^2 \over S_Y^2} \sim F(\nu_1, \nu_2) \text{ where } \nu_1 = n_1 - 1, \nu_2 = n_2 - 1
+$$
+
+其中 $F(\nu_1, \nu_2)$ 為 F 機率分佈，機率密度函數為
+
+$$
+\begin{aligned}
+f _ {F(\nu_1, \nu_2)} (x) & = {\sqrt{(\nu_1 x) ^ {\nu_1} \nu_2 ^ {\nu_2} \over (\nu_1 x + \nu_2) ^ {\nu_1 + \nu_2}} \over x B \left ({\nu_1 \over 2}, {\nu_2 \over 2} \right )} \\
+& = {1 \over B \left ({\nu_1 \over 2}, {\nu_2 \over 2} \right )} \left ({\nu_1 \over \nu_2} \right ) ^ {\nu_1 \over 2} 
+x ^ {{\nu_1 \over 2} - 1} \left ( 1 + {\nu_1 \over \nu_2} x \right ) ^ {- {\nu_1 + \nu_2 \over 2}} \\
+\text{where } B(x, y) & = \int _ 0 ^ 1 t ^ {x - 1} (1 - t) ^ {y - 1} dt, \text{ with Re}(x), \text{Re}(y) > 0
+\end{aligned}
+$$
+
+$B(x,y)$ 稱為 Beta 函數。
+
+![f-test.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/f-test.png?raw=true)
+
+接著即可透過相同的方法進行假說點定。
 
 
 
