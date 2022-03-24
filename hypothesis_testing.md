@@ -95,6 +95,18 @@ $$
 $$
 :::
 
-## T-statics
+## T-Distribution
 
-待補
+上面提到在真實情況下，一個模型的表標準差不是已知的，因此標準化時會出現必須使用樣本標準差進行估計的情形。在 $n$ 足夠大時可以視為兩者極接近。\
+而這個時候，統計學家 [Student](https://en.wikipedia.org/wiki/William_Sealy_Gosset) 推導出了驚為天人的結果。
+
+「對一個符合常態分佈的隨機變數 $X \sim \text{Normal} (\mu, \sigma)$，其抽樣 $n$ 個樣本結果所產生的隨機變數 $T = {\bar X - \mu \over S / \sqrt{n}}$ 所遵守的機率模型：T-Distribution」
+
+這個 $T$ 最厲害的地方就是他同時將 $\bar X$ 與 $S$ 所產生的隨機性考量進去後求出來的機率模型。T 機率分佈的機率密度函數如下
+
+$$
+f _ {X \sim \text{T}(\nu)} (X = x) = {\Gamma \left ( {\nu + 1 \over 2} \right ) \over \sqrt{\nu \pi} \Gamma \left ( {\nu + 1 \over 2} \right )} 
+{1 \over \left ({1 + x^2 \over \nu} \rightarrow ) ^ {\nu + 1 \over 2}}
+$$
+
+
