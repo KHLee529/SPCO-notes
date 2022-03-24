@@ -178,15 +178,28 @@ $$
 
 這時後，實際上應用的方式就根據 $H_1$ 有所差別了。以下的表格簡單代表了三個不同的 $H_1$ 中信心水準 $\alpha$ 的情況下要推翻虛無假說時 $t$ 的允許範圍。
 
-| $H_1$ | Range |
-| :-: | :-: |
-| $\mu < \mu_0$ | ![t-test-less.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-less.png?raw=true)|
-| $\mu > \mu_0$ | ![t-test-great.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-great.png?raw=true)|
-| $\mu \ne \mu_0$ | ![t-test-ne.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-ne.png?raw=true)|
-
 | $H_1$ | $\mu < \mu_0$   | $\mu > \mu_0$   | $\mu \ne \mu_0$ |
 | :-: | :-: | :-: | :-: |
-| Range | ![t-test-less.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-less.png?raw=true)| ![t-test-great.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-great.png?raw=true)| ![t-test-ne.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-ne.png?raw=true)| 
+| 範圍 | ![t-test-less.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-less.png?raw=true)| ![t-test-great.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-great.png?raw=true)| ![t-test-ne.png](https://github.com/KHLee529/SPCO-notes/blob/main/pics/t-test-ne.png?raw=true)| 
+| 型態 | 單邊 (one-tailed) | 單邊 (one-tailed) | 雙邊 (two-tailed) |
+
+其中最後一列的為這三種不同的範圍進行分類，當可推翻虛無假說的值落在兩端時，稱為雙邊，落在單一一段時稱為單邊。而雙邊的情況下，兩邊所站的機率分別為 ${\alpha \over 2}$。
+
+將以上的圖形以數學方式表示如下
+
+$$
+\begin{array}{lll}
+H_1 & \text{Reject Region }(t) & \text{Reject Region } (\mu) \\ \hline
+\mu < \mu_0   & t \le f _ {T(\nu=n-1)} (\alpha) & \mu \le \mu_0 - f _ {T(\nu=n-1)} (\alpha) {S \over \sqrt{n}} \\
+\mu > \mu_0   & t \ge f _ {T(\nu=n-1)} (1 - \alpha) &  \mu \ge \mu_0 + f _ {T(\nu=n-1)} (1 - \alpha) {S \over \sqrt{n}} \\
+\mu \ne \mu_0 & \begin{cases} t \le f _ {T(\nu=n-1)} (\alpha) \\ t \ge f _ {T(\nu=n-1)} (1 - \alpha)  \end{cases} & 
+\begin{cases} \mu \le \mu_0 - f _ {T(\nu=n-1)} (\alpha) {S \over \sqrt {n}} \\ \mu \ge \mu_0 + f _ {T(\nu=n-1)} (1 - \alpha) {S \over \sqrt{n}} \end{cases}  
+\end{array}
+$$
+
+#### p 值 (p-value)
+
+
 
 
 
