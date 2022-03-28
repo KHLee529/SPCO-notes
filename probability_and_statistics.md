@@ -70,6 +70,7 @@ d:sw->m:se[label="Statistics"]
 - 補集 (Complement): 在結果空間當中不符合事件 $A$ 的結果所成的集合稱為 $A$ 的補集。通常以 $A^C$ 或者 $A'$ 表記。
 - 交集 (Intersection): 同時滿足兩個事件 $A, B$ 的結果所成的集合稱為 $A, B$ 的交集。以 $A \cap B$ 表記。
 - 聯集 (Union): 滿足兩事件 $A, B$ 中至少一個的結果所成的集合稱為 $A, B$ 的聯集。以 $A \cup B$ 表記。
+- 互斥 (Mutually Exclusive): 兩事件 $A, B$ 交集為空集合 $A \cap B = \phi$ 
 
 ## 排列組合
 
